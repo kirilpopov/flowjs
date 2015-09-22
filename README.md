@@ -1,2 +1,2 @@
 # flowjs
-flowcharts for js
+flowcharts for js - my TypeScript playground project

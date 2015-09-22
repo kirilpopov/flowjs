@@ -1,0 +1,14 @@
+{
+  "name": "flow",
+  "version": "1.0.0",
+  "description": "flowcharts for js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kiril Popov",
+  "license": "ISC",
+  "dependencies": {
+    "raphael": "^2.1.4"
+  }
+}
