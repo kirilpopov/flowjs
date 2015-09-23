@@ -1,5 +1,5 @@
 ﻿/// <reference path="drawingLogic.ts" />
-/// <reference path="typings/raphael/raphael.d.ts" />
+/// <reference path="../typings/raphael/raphael.d.ts" />
 
 class RaphaelAdapter implements Drawer {
 

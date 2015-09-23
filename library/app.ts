@@ -48,7 +48,7 @@ var simpleJson = `
         }]
 }`;
 
-var json = `
+var json2 = `
 {
 	"items" : [
 		{   "name": "start",		

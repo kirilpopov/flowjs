@@ -10,5 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "raphael": "^2.1.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-ts": "^4.2.0",
+    "typescript": "^1.6.2"
   }
 }
