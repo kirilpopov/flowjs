@@ -1,9 +1,4 @@
-﻿/// <reference path="shape.ts" />
-/// <reference path="jsonParser.ts" />
-/// <reference path="drawingLogic.ts" />
-/// <reference path="raphaelAdapter.ts" />
-
-var simpleJson = `
+﻿var simpleJson = `
 {
 	"items" : [
 		{   "name": "start",
@@ -91,11 +86,10 @@ var json2 = `
 }
 `;
 
-window.onload = () => {
-    var parser = new JsonParser(simpleJson);
-    var result = parser.parse();    
-    var raphaelAdapter = new RaphaelAdapter();
-    var drawingLogic = new DrawingLogic(raphaelAdapter, "container", 500, 5000);
-    drawingLogic.draw(result);
+window.onload = function () {
+   
+    var p = new jsflow();
+    var shapes = p.loadJson(simpleJson);
+    p.draw(shapes);
 };
 

@@ -1,8 +1,7 @@
-﻿interface Parser {
-    parse(): Shape;
-}
+﻿import Parser from './jsonParser'
+import {Shape, Decision, Start, Process, End, ShapeLink, Direction} from './shape'
 
-class JsonParser implements Parser{
+export default class JsonParser implements Parser{
 
     jsonObj: any;
 

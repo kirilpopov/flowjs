@@ -1,12 +1,7 @@
-﻿interface Drawer {
-    init(elementId: string, width: number, height: number);
-    line(start: Point, end: Point, arrow?: boolean, text?: string);    
-    rect(start: Point, width: number, height: number, text?: string);
-    ellipse(center: Point, height: number, width: number, text?: string);
-}
+﻿import {Drawer} from './drawer'
+import {Shape, Decision, Start, Process, End, ShapeLink, Direction, Rect, Point} from './shape'
 
-
-class DrawingLogic {
+export default class DrawingLogic {
     drawer: Drawer;
     canvasWidth: number;
     canvasHeight: number;

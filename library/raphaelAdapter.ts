@@ -1,7 +1,8 @@
-﻿/// <reference path="drawingLogic.ts" />
-/// <reference path="../typings/raphael/raphael.d.ts" />
+﻿/// <reference path="../typings/raphael/raphael.d.ts" />
+import {Drawer} from './drawer'
+import {Shape, Decision, Start, Process, End, ShapeLink, Direction, Rect, Point} from './shape'
 
-class RaphaelAdapter implements Drawer {
+export default class RaphaelAdapter implements Drawer {
 
     paper: RaphaelPaper;
 

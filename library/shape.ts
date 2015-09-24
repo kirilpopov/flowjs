@@ -1,4 +1,6 @@
-﻿class ShapeLink {
+﻿import {Drawer} from './drawer'
+
+export class ShapeLink {
 
     parent: Shape;
     child: Shape;
@@ -15,14 +17,14 @@
     }        
 }
 
-enum Direction {
+export enum Direction {
     Left,
     Up,
     Right,
     Down,    
 }
 
-class Point {
+export class Point {
     x: number;
     y: number;
 
@@ -53,7 +55,7 @@ class Point {
     }
 }
 
-class ContactPoint {
+export class ContactPoint {
 
     point: Point;
     shape: Shape;
@@ -65,7 +67,7 @@ class ContactPoint {
     }    
 }
 
-class Rect {
+export class Rect {
     constructor(x: number, y: number, width: number, height: number) {
         this.point = new Point(x, y);
         this.width = width;
@@ -80,7 +82,7 @@ class Rect {
     }
 }
 
-interface Shape {
+export interface Shape {
     addLink(link: ShapeLink);
     getLinks(): ShapeLink[];
     getTitle(): String;
@@ -101,7 +103,7 @@ interface Shape {
     getContactPoint(dir: Direction): ContactPoint;
 }
 
-class BaseShape implements Shape {
+export class BaseShape implements Shape {
     nextShapes: Shape[];
     links: ShapeLink[];
     title: string;
@@ -158,7 +160,7 @@ class BaseShape implements Shape {
     }
 }
 
-class Decision extends BaseShape {  
+export class Decision extends BaseShape {  
     drawCore(drawer: Drawer, rect: Rect): ContactPoint[]{
         var p1 = rect.point.add(0, rect.height / 2);
         var p2 = rect.point.add(rect.width / 2, 0);
@@ -174,7 +176,7 @@ class Decision extends BaseShape {
     }  
 }
 
-class Start extends BaseShape {
+export class Start extends BaseShape {
     drawCore(drawer: Drawer, rect: Rect): ContactPoint[] {
         var center = rect.point.add(rect.width / 2, rect.height / 2);
         drawer.ellipse(center, rect.width / 2, rect.height / 4, this.getTitle());        
@@ -188,10 +190,10 @@ class Start extends BaseShape {
     }
 }
 
-class End extends Start {
+export class End extends Start {
 }
 
-class Process extends BaseShape {
+export class Process extends BaseShape {
     drawCore(drawer: Drawer, rect: Rect): ContactPoint[]{
         drawer.rect(rect.point, rect.width, rect.height, this.getTitle());       
 
