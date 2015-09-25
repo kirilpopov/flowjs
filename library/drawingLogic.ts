@@ -1,5 +1,6 @@
 ﻿import {Drawer} from './drawer'
 import {Shape, Decision, Start, Process, End, ShapeLink, Direction, Rect, Point} from './shape'
+import JsFlowConfig from './jsflowConfig';
 
 export default class DrawingLogic {
     drawer: Drawer;
@@ -11,12 +12,12 @@ export default class DrawingLogic {
 
     lineHeight: number = 50;
 
-    constructor(drawer: Drawer, canvasId:string, canvasWidth: number, canvasHeight: number) {
+    constructor(drawer: Drawer, config:JsFlowConfig) {
         this.drawer = drawer;
-        this.drawer.init(canvasId, canvasWidth, canvasHeight);
+        this.drawer.init(config.canvasId, config.canvasWidth, config.canvasHeight);
 
-        this.canvasWidth = canvasWidth;
-        this.canvasHeight = canvasHeight;
+        this.canvasWidth = config.canvasWidth;
+        this.canvasHeight = config.canvasHeight;
     }
 
     draw(rootShape: Shape) {        

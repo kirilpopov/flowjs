@@ -1,11 +1,14 @@
 import DrawingLogic from './drawingLogic';
 import JsonParser from './jsonParser';
 import RaphaelAdapter from './raphaelAdapter';
+import JsFlowConfig from './jsflowConfig';
 
 declare var jsflow: any;
 
-jsflow = function(g){	
-	        	
+jsflow = function(config){	
+	
+	var jsConfig = new JsFlowConfig(config);
+		
 	function loadJson(json)
 	{
 		var parser = new JsonParser(json);
@@ -14,11 +17,10 @@ jsflow = function(g){
 	
 	function draw(shape){
 		var raphaelAdapter = new RaphaelAdapter();
-    	var drawingLogic = new DrawingLogic(raphaelAdapter, "container", 500, 5000);	
+    	var drawingLogic = new DrawingLogic(raphaelAdapter, jsConfig);	
 		drawingLogic.draw(shape);
 	}
-	
-	
+		
 	return {
 		loadJson: loadJson,
 		draw: draw
