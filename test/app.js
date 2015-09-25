@@ -87,8 +87,8 @@ var json2 = `
 `;
 
 window.onload = function () {   
-    var p = new jsflow({canvasWidth : 100});
+    var flow = new jsflow({canvasWidth : 100});
     var shapes = p.loadJson(simpleJson);
-    p.draw(shapes);
+    flow.draw(shapes);
 };
 

@@ -2,8 +2,8 @@ module.exports = function(grunt) {
   
 
 var sourceFolder = 'library';
-var jsSourceFolder = sourceFolder + "/js";
-var jsSources = sourceFolder + '/js/*.js'
+var jsSourceFolder = sourceFolder + "_js";
+var jsSources = jsSourceFolder + '/*.js'
 var tsSources = sourceFolder + '/*.ts'
 var test_server_port = 8000
 
