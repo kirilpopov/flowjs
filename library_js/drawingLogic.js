@@ -2,8 +2,8 @@ var shape_1 = require('./shape');
 var DrawingLogic = (function () {
     function DrawingLogic(drawer, config) {
         this.elementWidth = 80;
-        this.elementHeight = 80;
-        this.lineHeight = 50;
+        this.elementHeight = 40;
+        this.lineHeight = 40;
         this.drawer = drawer;
         this.drawer.init(config.canvasId, config.canvasWidth, config.canvasHeight);
         this.canvasWidth = config.canvasWidth;

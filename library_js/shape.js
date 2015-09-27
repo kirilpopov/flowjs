@@ -117,6 +117,7 @@ var Decision = (function (_super) {
         drawer.line(p2, p3);
         drawer.line(p3, p4);
         drawer.line(p4, p1);
+        drawer.text(this.title, p1.add(rect.width / 2, 0));
         return [p1.toContactPoint(), p2.toContactPoint(), p3.toContactPoint(), p4.toContactPoint()];
     };
     return Decision;
@@ -129,12 +130,12 @@ var Start = (function (_super) {
     }
     Start.prototype.drawCore = function (drawer, rect) {
         var center = rect.point.add(rect.width / 2, rect.height / 2);
-        drawer.ellipse(center, rect.width / 2, rect.height / 4, this.getTitle());
+        var shapeBox = drawer.ellipse(center, rect.width / 2, rect.height / 2, this.getTitle());
         return [
-            new Point(rect.point.x, rect.point.y + rect.height / 2).toContactPoint(),
-            new Point(rect.point.x + rect.width / 2, rect.point.y + rect.height / 4).toContactPoint(),
-            new Point(rect.point.x + rect.width, rect.point.y + rect.height / 2).toContactPoint(),
-            new Point(rect.point.x + rect.width / 2, rect.point.y + rect.height * 3 / 4).toContactPoint()
+            shapeBox.point.add(0, shapeBox.height / 2).toContactPoint(),
+            shapeBox.point.add(shapeBox.width / 2, 0).toContactPoint(),
+            shapeBox.point.add(shapeBox.width, shapeBox.height / 2).toContactPoint(),
+            shapeBox.point.add(shapeBox.width / 2, shapeBox.height).toContactPoint()
         ];
     };
     return Start;

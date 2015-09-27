@@ -172,6 +172,7 @@ export class Decision extends BaseShape {
         drawer.line(p3, p4);
         drawer.line(p4, p1);        
 
+        drawer.text(this.title, p1.add(rect.width / 2, 0));
         return [p1.toContactPoint(), p2.toContactPoint(), p3.toContactPoint(), p4.toContactPoint()];            
     }  
 }
@@ -179,18 +180,20 @@ export class Decision extends BaseShape {
 export class Start extends BaseShape {
     drawCore(drawer: Drawer, rect: Rect): ContactPoint[] {
         var center = rect.point.add(rect.width / 2, rect.height / 2);
-        drawer.ellipse(center, rect.width / 2, rect.height / 4, this.getTitle());        
+        var shapeBox = drawer.ellipse(center, rect.width / 2, rect.height / 2, this.getTitle());        
 
+        //drawer.rect(shapeBox.point, shapeBox.width, shapeBox.height);
+        //drawer.ellipse(shapeBox.point.add(shapeBox.width / 2, 0), 5,5);
         return [
-            new Point(rect.point.x, rect.point.y + rect.height / 2).toContactPoint(),                        // left
-            new Point(rect.point.x + rect.width / 2, rect.point.y + rect.height / 4).toContactPoint(),       // up                      
-            new Point(rect.point.x + rect.width, rect.point.y + rect.height / 2).toContactPoint(),           // right
-            new Point(rect.point.x + rect.width / 2, rect.point.y + rect.height * 3 / 4).toContactPoint()    // down  
+            shapeBox.point.add(0, shapeBox.height / 2).toContactPoint(), // left
+            shapeBox.point.add(shapeBox.width / 2, 0).toContactPoint(), // up                      
+            shapeBox.point.add(shapeBox.width, shapeBox.height / 2).toContactPoint(),           // right
+            shapeBox.point.add(shapeBox.width / 2, shapeBox.height).toContactPoint()    // down  
         ];
     }
 }
 
-export class End extends Start {
+export class End extends Start {    
 }
 
 export class Process extends BaseShape {

@@ -8,9 +8,9 @@ export default class DrawingLogic {
     canvasHeight: number;
 
     elementWidth: number = 80;
-    elementHeight: number = 80;
+    elementHeight: number = 40;
 
-    lineHeight: number = 50;
+    lineHeight: number = 40;
 
     constructor(drawer: Drawer, config:JsFlowConfig) {
         this.drawer = drawer;

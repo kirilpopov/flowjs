@@ -36,19 +36,31 @@ export default class RaphaelAdapter implements Drawer {
         }
     }
 
-    text(text: string, bounds: Rect) {
+    text(text: string, center: Point) {
+        var t = this.paper.text(center.x, center.y, text);
+        this.updateText(t);
     }
 
     rect(start: Point, width: number, height: number, text?: string) {
         var el = this.paper.rect(start.x, start.y, width, height);
         var center = start.add(width / 2, height / 2);
         var textEl = this.paper.text(center.x, center.y, text);
+        this.updateText(textEl);
         var eltext = this.paper.set([el, textEl]);                
     }
 
-    ellipse(center: Point, width: number, height: number, text?: string) {        
+    ellipse(center: Point, width: number, height: number, text?: string) : Rect{        
         var el = this.paper.ellipse(center.x, center.y, width, height);
         var textEl = this.paper.text(center.x, center.y, text);
-        var eltext = this.paper.set([el, textEl]);                
+        this.updateText(textEl);
+        var eltext = this.paper.set([el, textEl]);
+        
+        var bb = el.getBBox();
+        return new Rect(bb.x, bb.y,  bb.width, bb.height);                
+    }
+    
+    updateText(textEl: RaphaelElement)
+    {
+        textEl.attr({ "font-size": 9, "font-family": "Arial, Helvetica, sans-serif" });
     }
 }

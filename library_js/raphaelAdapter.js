@@ -1,3 +1,4 @@
+var shape_1 = require('./shape');
 var RaphaelAdapter = (function () {
     function RaphaelAdapter() {
     }
@@ -22,18 +23,27 @@ var RaphaelAdapter = (function () {
             });
         }
     };
-    RaphaelAdapter.prototype.text = function (text, bounds) {
+    RaphaelAdapter.prototype.text = function (text, center) {
+        var t = this.paper.text(center.x, center.y, text);
+        this.updateText(t);
     };
     RaphaelAdapter.prototype.rect = function (start, width, height, text) {
         var el = this.paper.rect(start.x, start.y, width, height);
         var center = start.add(width / 2, height / 2);
         var textEl = this.paper.text(center.x, center.y, text);
+        this.updateText(textEl);
         var eltext = this.paper.set([el, textEl]);
     };
     RaphaelAdapter.prototype.ellipse = function (center, width, height, text) {
         var el = this.paper.ellipse(center.x, center.y, width, height);
         var textEl = this.paper.text(center.x, center.y, text);
+        this.updateText(textEl);
         var eltext = this.paper.set([el, textEl]);
+        var bb = el.getBBox();
+        return new shape_1.Rect(bb.x, bb.y, bb.width, bb.height);
+    };
+    RaphaelAdapter.prototype.updateText = function (textEl) {
+        textEl.attr({ "font-size": 9, "font-family": "Arial, Helvetica, sans-serif" });
     };
     return RaphaelAdapter;
 })();

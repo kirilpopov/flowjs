@@ -86,9 +86,48 @@ var json2 = `
 }
 `;
 
+var jsonDoesItWork  =`
+{  
+	"items" : [
+		{   
+            "name": "start",		
+            "title": "Start",
+            "type": "start",
+            "next": "doesItWork"
+        },
+        {   
+            "name": "doesItWork",		
+            "title": "Does it work?",
+            "type": "decision",
+            "next": [
+                {"next":"dontTouchIt", "label":"Yes", "dir":"left"}, 
+				{"next":"idiot", "label":"No", "dir":"right"}
+				]
+        },
+        {   
+            "name": "dontTouchIt",		
+            "title": "Don't touch it",
+            "type": "process",
+            "next": "end"
+        },
+        {   
+            "name": "idiot",		
+            "title": "Idiot",
+            "type": "process",
+            "next": "end"
+        },        
+        {   
+            "name": "end",		
+            "title": "End",
+            "type": "end",
+            "next": "end"
+        }
+    ]
+}
+`;
 window.onload = function () {   
-    var flow = new jsflow({canvasWidth : 100});
-    var shapes = p.loadJson(simpleJson);
+    var flow = new jsflow({canvasId : 'flowContainer'});
+    var shapes = flow.loadJson(jsonDoesItWork);
     flow.draw(shapes);
 };
 
