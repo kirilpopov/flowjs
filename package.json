@@ -9,7 +9,8 @@
   "author": "Kiril Popov",
   "license": "ISC",
   "dependencies": {
-    "raphael": "^2.1.4"
+    "raphael": "^2.1.4",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "browserify-versionify": "^1.0.6",

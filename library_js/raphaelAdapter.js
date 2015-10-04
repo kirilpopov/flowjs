@@ -1,4 +1,5 @@
 var shape_1 = require('./shape');
+require('raphael');
 var RaphaelAdapter = (function () {
     function RaphaelAdapter() {
     }

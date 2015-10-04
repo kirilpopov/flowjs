@@ -2,12 +2,14 @@
 import {Drawer} from './drawer'
 import {Shape, Decision, Start, Process, End, ShapeLink, Direction, Rect, Point} from './shape'
 
+import 'raphael'
+
 export default class RaphaelAdapter implements Drawer {
 
     paper: RaphaelPaper;
 
     init(elementId: string, width: number, height:number) {
-        this.paper = Raphael(elementId, width, height);        
+        this.paper = Raphael(elementId, width, height);                
     }
 
 
